@@ -22,10 +22,22 @@
 </template>
 
 <script setup>
-const currentYear = new Date().getFullYear()
+const { technologies } = useTechData()
 
-const calculateYears = (startYear) => {
-  return currentYear - startYear
+const calculateTotalYears = (techName) => {
+  const tech = technologies.find(t => t.name === techName)
+  if (!tech) return '0'
+
+  let totalMilliseconds = 0
+  
+  tech.periods.forEach(period => {
+    const start = new Date(period.start)
+    const end = period.end === 'Present' ? new Date() : new Date(period.end)
+    totalMilliseconds += (end - start)
+  })
+
+  const years = totalMilliseconds / (1000 * 60 * 60 * 24 * 365.25)
+  return years.toFixed(1).replace(/\.0$/, '')
 }
 
 const skillCategories = [
@@ -33,18 +45,26 @@ const skillCategories = [
     title: 'Languages & Frameworks',
     icon: 'heroicons:code-bracket',
     skills: [
-      `PHP (${calculateYears(2021)} yrs)`, 
-      `Laravel (${calculateYears(2021)} yrs)`, 
-      `Vue.js 2/3 (${calculateYears(2021)} yrs)`, 
-      `JavaScript (${calculateYears(2021)} yrs)`, 
-      'TypeScript', 
-      `SQL (${calculateYears(2019)} yrs)`
+      `PHP (${calculateTotalYears('PHP')} yrs)`, 
+      `Laravel (${calculateTotalYears('Laravel')} yrs)`, 
+      `Vue.js 2/3 (${calculateTotalYears('Vue.js')} yrs)`, 
+      `JavaScript (${calculateTotalYears('JavaScript')} yrs)`, 
+      `TypeScript (${calculateTotalYears('TypeScript')} yrs)`, 
+      `SQL (${calculateTotalYears('SQL')} yrs)`
     ]
   },
   {
     title: 'Infrastructure & DevOps',
     icon: 'heroicons:server-stack',
-    skills: ['AWS Services', 'Docker', 'Linux', 'CI/CD Pipelines', 'NGINX', 'Jenkins']
+    skills: [
+      `AWS Services (${calculateTotalYears('AWS')} yrs)`,
+      `DevOps (${calculateTotalYears('DevOps')} yrs)`,
+      'Docker', 
+      'Linux', 
+      'CI/CD Pipelines', 
+      'NGINX', 
+      'Jenkins'
+    ]
   },
   {
     title: 'Tools & Methodologies',
