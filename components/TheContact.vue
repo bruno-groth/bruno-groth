@@ -6,7 +6,7 @@
       :visible="{ opacity: 1, scale: 1, transition: { duration: 500 } }"
       class="max-w-2xl"
     >
-      <p class="text-primary font-mono mb-4">04. What's Next?</p>
+      <p class="text-primary font-mono mb-4">05. What's Next?</p>
       <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Get In Touch</h2>
       <p class="text-gray-400 text-lg mb-12">
         I'm currently open to new opportunities. Whether you have a question or just want to say hi, 

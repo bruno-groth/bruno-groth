@@ -5,7 +5,7 @@
       class="max-w-4xl mx-auto"
     >
       <h2 class="flex items-center text-3xl font-bold text-white mb-12">
-        <span class="text-primary font-mono text-2xl mr-4">03.</span> 
+        <span class="text-primary font-mono text-2xl mr-4">04.</span> 
         Technical Skills
         <span class="ml-4 h-px bg-white/20 flex-grow max-w-xs"></span>
       </h2>
