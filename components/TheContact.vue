@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="py-20 min-h-[60vh] flex flex-col justify-center items-center text-center">
+  <section id="contact" class="py-10 min-h-[60vh] flex flex-col justify-center items-center text-center">
     <div 
       v-motion
       :initial="{ opacity: 0, scale: 0.9 }"
@@ -17,14 +17,24 @@
         Say Hello
       </a>
 
-      <div class="mt-20 flex justify-center gap-8">
-        <a href="https://linkedin.com/in/bruno-groth" target="_blank" class="text-gray-400 hover:text-primary transition-colors">
+      <div class="mt-20 flex flex-col sm:flex-row justify-center gap-8">
+        <a href="https://linkedin.com/in/bruno-groth" target="_blank" class="text-gray-400 hover:text-primary transition-colors flex items-center justify-center gap-2">
           <Icon name="mdi:linkedin" class="w-8 h-8" />
+          <span class="sm:hidden">LinkedIn</span>
         </a>
-        <a href="mailto:brunom.groth@gmail.com" class="text-gray-400 hover:text-primary transition-colors">
+        <a href="https://github.com/brunomiguelrent" target="_blank" class="text-gray-400 hover:text-primary transition-colors flex items-center justify-center gap-2">
+          <Icon name="mdi:github" class="w-8 h-8" />
+          <span class="sm:hidden">GitHub</span>
+        </a>
+        <a href="mailto:brunom.groth@gmail.com" class="text-gray-400 hover:text-primary transition-colors flex items-center justify-center gap-2">
           <Icon name="mdi:email" class="w-8 h-8" />
+          <span class="sm:hidden">Email</span>
         </a>
       </div>
     </div>
   </section>
 </template>
+
+<script setup>
+// Contact section logic
+</script>

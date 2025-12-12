@@ -1,5 +1,5 @@
 <template>
-  <section id="experience" class="py-20">
+  <section id="experience" class="py-10">
     <div 
       v-motion-slide-visible-once-bottom
       class="max-w-4xl mx-auto"
@@ -12,12 +12,12 @@
 
       <div class="flex flex-col md:flex-row gap-8">
         <!-- Tabs -->
-        <div class="flex md:flex-col overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-l border-white/10 min-w-max">
+        <div class="flex md:flex-col overflow-x-auto md:overflow-visible border-b md:border-b-0 md:border-l border-white/10 min-w-full md:min-w-max pb-2 md:pb-0 scrollbar-hide">
           <button 
             v-for="(job, index) in jobs" 
             :key="index"
             @click="activeTab = index"
-            class="px-6 py-3 text-left font-mono text-sm transition-all duration-300 border-b-2 md:border-b-0 md:border-l-2 hover:bg-white/5 whitespace-nowrap"
+            class="px-6 py-3 text-left font-mono text-sm transition-all duration-300 border-b-2 md:border-b-0 md:border-l-2 hover:bg-white/5 whitespace-nowrap flex-shrink-0"
             :class="activeTab === index ? 'border-primary text-primary bg-white/5' : 'border-transparent text-gray-400 hover:text-white'"
           >
             {{ job.company }}
@@ -25,9 +25,15 @@
         </div>
 
         <!-- Content -->
-        <div class="flex-grow min-h-[400px]">
+        <div ref="contentRef" class="flex-grow min-h-[400px] relative p-6 rounded-lg border border-white/5 bg-white/5 overflow-hidden group">
+          <!-- Spotlight -->
+          <div 
+            class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+            :style="{ background: `radial-gradient(600px circle at ${elementX}px ${elementY}px, rgba(0, 220, 130, 0.05), transparent 40%)` }"
+          ></div>
+
           <Transition name="fade" mode="out-in">
-            <div :key="activeTab" class="space-y-4">
+            <div :key="activeTab" class="space-y-4 relative z-10">
               <h3 class="text-xl font-bold text-white">
                 {{ jobs[activeTab].title }} 
                 <span class="text-primary">@ {{ jobs[activeTab].company }}</span>
@@ -44,7 +50,7 @@
               </ul>
 
               <div v-if="jobs[activeTab].tech" class="pt-4 flex flex-wrap gap-2">
-                <span v-for="tech in jobs[activeTab].tech" :key="tech" class="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded">
+                <span v-for="tech in jobs[activeTab].tech" :key="tech" class="text-xs font-mono text-primary bg-primary/10 px-2 py-1 rounded hover:bg-primary hover:text-darker transition-colors cursor-default">
                   {{ tech }}
                 </span>
               </div>
@@ -58,6 +64,8 @@
 
 <script setup>
 const activeTab = ref(0)
+const contentRef = ref(null)
+const { elementX, elementY } = useMouseInElement(contentRef)
 
 const jobs = [
   {
