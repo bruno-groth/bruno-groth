@@ -1,5 +1,5 @@
 <template>
-  <section id="contact" class="py-10 min-h-[60vh] flex flex-col justify-center items-center text-center">
+  <section id="contact" class="py-20 min-h-[60vh] flex flex-col justify-center items-center text-center">
     <div 
       v-motion
       :initial="{ opacity: 0, scale: 0.9 }"

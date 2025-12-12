@@ -7,7 +7,7 @@
       <slot />
     </main>
     <footer class="text-center py-8 text-gray-500 text-sm relative z-10">
-      &copy; {{ new Date().getFullYear() }} Bruno Groth. Built with Nuxt 3 & Vue.js.
+      &copy; {{ new Date().getFullYear() }} Bruno Groth. Built with Nuxt 3 & Vue.js. <a href="https://audentestech.com.br" target="_blank" class="underline hover:text-primary transition-colors">Audentes Tech</a>
     </footer>
   </div>
 </template>
